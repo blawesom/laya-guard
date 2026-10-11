@@ -24,6 +24,10 @@ All notable changes to this project are documented here. Versions follow
   `review`. Regexes were already applied to the whole text; inputs over 256K
   characters or with a line over 16K are still blocked unread.
 
+- Unicode homoglyph evasion: input is NFKC-normalized once in `judge()`, so
+  full-width variants (`ｒｍ -rf /`) now hit the regex layer instead of
+  reaching only the model.
+
 ### Added
 
 - `credential-read` policy (review): reading private keys or cloud credentials
