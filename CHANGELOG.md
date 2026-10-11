@@ -41,6 +41,14 @@ All notable changes to this project are documented here. Versions follow
   behavior. Non-interactive runs (`claude -p`) have nobody to answer, so Claude Code
   denies the `ask` there; use `LAYA_GUARD_REVIEW=pass` for unattended runs.
 
+### Fixed
+
+- Regex `block` false positives (model never consulted, so they were instant
+  blocks): `DAN` in prompt-injection matched `dan`/`dandelion` substrings
+  (now `jailbreak|\bDAN mode\b`), and auth-bypass's `verify.*(off|disable|
+  false|skip)` matched benign prose like "verify the fallback is off"
+  (now only ssl/tls verify flags such as `http.sslVerify false`).
+
 ## [0.2.4] - 2026-10-12
 
 ### Security
