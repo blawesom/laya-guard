@@ -50,6 +50,11 @@ All notable changes to this project are documented here. Versions follow
   (`주민`, `rrn`, `ssn`, `jumin`, `resident reg…`) is on the same line. A bare
   RRN-shaped number goes to the model instead: it no longer qualifies for the
   safe-command lane, and the MOCK/fallback heuristics review it.
+- Regex `block` false positives (model never consulted, so they were instant
+  blocks): `DAN` in prompt-injection matched `dan`/`dandelion` substrings
+  (now `jailbreak|\bDAN mode\b`), and auth-bypass's `verify.*(off|disable|
+  false|skip)` matched benign prose like "verify the fallback is off"
+  (now only ssl/tls verify flags such as `http.sslVerify false`).
 
 ## [0.2.4] - 2026-10-12
 
