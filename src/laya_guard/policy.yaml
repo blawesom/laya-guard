@@ -218,7 +218,7 @@ policies:
       # 자연어 "verify the fallback is off" 같은 문장 오탐 방지:
       # ssl/tls 검증 플래그 형태(http.sslVerify false, tls-verify=false, ssl_verify: false 등)만 매칭.
       # 구분자는 1개 이상: 'sslVerify0' 같은 붙은 토큰(grep 검색어 등)은 매칭하지 않음
-      - '(ssl|tls)[\w-]*verify[\s:=]+(false|off|no|0)\b'
+      - '(ssl|tls)[\w-]*verify[\s:=]+(false|off|no|0|disabled?|skip)\b'
       # 코드 관용구 우회도 유지: requests.get(url, verify=False), fetch(u, {verify: false}) 등.
       # 이전 패턴(verify.*(false|...))이 잡던 형태의 부분집합이라 새 오탐은 없음
       - '\bverify\s*[:=]\s*False\b'
