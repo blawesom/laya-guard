@@ -54,7 +54,9 @@ All notable changes to this project are documented here. Versions follow
   blocks): `DAN` in prompt-injection matched `dan`/`dandelion` substrings
   (now `jailbreak|\bDAN mode\b`), and auth-bypass's `verify.*(off|disable|
   false|skip)` matched benign prose like "verify the fallback is off"
-  (now only ssl/tls verify flags such as `http.sslVerify false`).
+  (now only ssl/tls verify flags such as `http.sslVerify false`, plus the
+  code idiom `verify=False` / `verify: false` as in
+  `requests.get(url, verify=False)`).
 
 ## [0.2.4] - 2026-10-12
 
