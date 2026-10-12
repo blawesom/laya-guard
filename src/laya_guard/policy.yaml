@@ -100,8 +100,9 @@ policies:
       - '이전 지시를 무시'
       - 'system prompt.*(보여|출력|leak|reveal)'
       # \bDAN mode\b만: 단독 'DAN'은 ignore(IGNORECASE)에서 dan/dandelion 등
-      # 일반 단어의 부분문자열로 오탐 (regex block은 모델을 건너뛰므로 고정밀 필요)
-      - 'jailbreak|\bDAN mode\b'
+      # 일반 단어의 부분문자열로 오탐 (regex block은 모델을 건너뛰므로 고정밀 필요).
+      # jailbreak도 파일명·경로(jailbreak.log, test_jailbreak.py, tests/jailbreak/)는 제외
+      - '(?<![\w./-])jailbreak\w*(?![\w/-]|\.\w)|\bDAN mode\b'
     laya:
       choice: ["allow", "review", "block"]
       score_hint: "에이전트 지시를 탈취하려는 시도 위험도"

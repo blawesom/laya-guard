@@ -52,7 +52,9 @@ All notable changes to this project are documented here. Versions follow
   safe-command lane, and the MOCK/fallback heuristics review it.
 - Regex `block` false positives (model never consulted, so they were instant
   blocks): `DAN` in prompt-injection matched `dan`/`dandelion` substrings
-  (now `jailbreak|\bDAN mode\b`), and auth-bypass's `verify.*(off|disable|
+  (now `\bDAN mode\b`), `jailbreak` matched file names like `jailbreak.log`
+  and `tests/test_jailbreak.py` (file names and paths are now excluded),
+  and auth-bypass's `verify.*(off|disable|
   false|skip)` matched benign prose like "verify the fallback is off"
   (now only ssl/tls verify flags such as `http.sslVerify false`, plus the
   code idiom `verify=False` / `verify: false` as in
