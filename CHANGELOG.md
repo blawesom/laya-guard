@@ -37,6 +37,10 @@ All notable changes to this project are documented here. Versions follow
 
 ### Changed
 
+- Limitations now list `git commit` among the unjudged project code the
+  safe-command lane runs: it executes the repo's own `.git/hooks`, the same
+  class as `npm test` running project scripts (`build.rs` was already listed).
+
 - **Behavior change.** The Claude Code hook (`guard-hook.sh`) now asks you on `review`:
   it prints a `permissionDecision: "ask"` JSON (with the policy id and reason) and
   exits 0, so Claude Code shows a permission prompt. Before, `review` passed through
